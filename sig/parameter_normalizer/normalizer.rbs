@@ -1,0 +1,15 @@
+module ParameterNormalizer
+  class Normalizer
+    def as_boolean: -> bool
+
+    def as_date: -> Date?
+
+    def as_datetime: -> ActiveSupport::TimeWithZone?
+
+    def as_integer: -> Integer?
+
+    def as_integer_array: -> [Integer?]
+
+    def as_integer_hash: -> Hash[untyped, Integer?]
+  end
+end

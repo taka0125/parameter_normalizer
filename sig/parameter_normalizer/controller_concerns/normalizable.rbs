@@ -1,0 +1,9 @@
+module ParameterNormalizer
+  module ControllerConcerns
+    module Normalizable
+      @parameter_normalizer: Normalizer
+
+      def parameter_normalizer: -> Normalizer
+    end
+  end
+end
