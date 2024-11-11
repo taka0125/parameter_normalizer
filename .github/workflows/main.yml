@@ -21,9 +21,12 @@ jobs:
           - '3.2'
           - '3.3'
         railties:
-          - '7.0'
           - '7.1'
           - '7.2'
+          - '8.0'
+        exclude:
+          - ruby: '3.1'
+            railties: '8.0'
 
     env:
       BUNDLE_GEMFILE: gemfiles/railties${{ matrix.railties }}.gemfile
