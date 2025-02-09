@@ -7,12 +7,14 @@ module ParameterNormalizer
         @parameter_normalizer ||= ParameterNormalizer::Normalizer.new
       end
 
-      def normalize_parameter(key, method, skip_key_not_found: true)
+      def normalize_parameter(key, method, target: nil, skip_key_not_found: true)
+        target ||= params
+
         if skip_key_not_found
-          return unless params.key?(key)
+          return unless target.key?(key)
         end
 
-        params[key] = parameter_normalizer.public_send(method, params[key])
+        target[key] = parameter_normalizer.public_send(method, target[key])
       end
     end
   end
