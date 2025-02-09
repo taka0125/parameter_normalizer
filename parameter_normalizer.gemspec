@@ -26,4 +26,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'activesupport'
 
   spec.add_development_dependency 'appraisal'
+  spec.add_development_dependency 'rbs'
+  spec.add_development_dependency 'typeprof'
 end

@@ -1,4 +1,22 @@
 module ParameterNormalizer
   VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+
+  class Normalizer
+    def as_integer: (untyped value) -> Integer?
+    def as_integer_array: (untyped value) -> Array[Integer]
+    def as_integer_hash: (untyped value) -> Hash[untyped, Integer]
+    def as_boolean: (untyped value) -> bool
+    def as_datetime: (untyped value) -> nil
+    def as_date: (untyped value) -> nil
+  end
+
+  class Railtie
+  end
+
+  module ControllerConcerns
+    module Normalizable
+      def parameter_normalizer: -> Normalizer
+      def normalize_parameter: (Symbol key, Symbol method, target: untyped?, skip_key_not_found: bool) -> untyped
+    end
+  end
 end

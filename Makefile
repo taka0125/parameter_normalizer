@@ -28,3 +28,10 @@ gem/release:
 	gh workflow run release.yml -f rubygems-otp-code="$$otp_code"
 console: up
 	$(DOCKER_COMPOSE) exec ruby bash -c './bin/console'
+sig/typeprof: up
+	$(DOCKER_COMPOSE) exec ruby bash -c 'typeprof lib/**/*.rb spec/**/*_spec.rb -o sig_generated/parameter_normalizer.rbs'
+sig/subtract: up
+	$(DOCKER_COMPOSE) exec ruby bash -c 'bundle exec rbs subtract sig_generated/parameter_normalizer.rbs sig/parameter_normalizer.rbs > sig_generated/parameter_normalizer_diff.rbs'
+sig: up
+	$(MAKE) sig/typeprof
+	$(MAKE) sig/subtract

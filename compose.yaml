@@ -1,6 +1,6 @@
 services:
   ruby:
-    image: ruby:3.2
+    image: ruby:3.3
     command: sleep infinity
     working_dir: /app
     volumes:
